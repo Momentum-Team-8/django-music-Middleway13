@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--  this is where we render our album information to the browser -->
+<h1>All Albums</h1>
+
+<p><a href="{% url 'add_album' %}">Add New Album</a></p>
+
+<div>
+    {% for album in albums %}
+        <div class="card">
+            {% if album.title %}
+                <p>{{album.title}} - {{album.artist}}</p>
+            {% endif %}
+            <a href="{% url 'edit_album' pk=album.pk %}">Edit Album</a> <a href="{% url 'delete_album' pk=album.pk %}">Delete Album</a><br>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
